@@ -1,0 +1,264 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitRevolution - Transform Your Health</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary: #6C63FF;
+            --secondary: #3F3D56;
+            --accent: #FF6584;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--secondary);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            padding: 150px 5% 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .features {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .bmi-calculator {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .calculator-input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .workout-generator {
+            padding: 100px 5%;
+            background: var(--secondary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">FitRevolution</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#tools">Tools</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Health Journey</h1>
+            <p>Discover personalized fitness solutions and smart health tools to achieve your wellness goals.</p>
+            <button class="cta-btn">Start Your Journey</button>
+        </div>
+        <img src="https://via.placeholder.com/500" alt="Fitness Illustration">
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <i class="fas fa-heartbeat feature-icon"></i>
+            <h3>Smart Tracking</h3>
+            <p>Advanced biometric tracking with AI-powered insights</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-dumbbell feature-icon"></i>
+            <h3>Custom Workouts</h3>
+            <p>Personalized exercise plans based on your goals</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-utensils feature-icon"></i>
+            <h3>Nutrition Plans</h3>
+            <p>Tailored meal plans with dietary recommendations</p>
+        </div>
+    </section>
+
+    <section class="bmi-calculator" id="tools">
+        <div class="calculator-container">
+            <h2>BMI Calculator</h2>
+            <input type="number" class="calculator-input" placeholder="Weight (kg)" id="weight">
+            <input type="number" class="calculator-input" placeholder="Height (cm)" id="height">
+            <button class="cta-btn" onclick="calculateBMI()">Calculate</button>
+            <div id="bmi-result"></div>
+        </div>
+    </section>
+
+    <section class="workout-generator">
+        <div class="calculator-container">
+            <h2>Daily Workout Generator</h2>
+            <select class="calculator-input" id="workout-type">
+                <option value="cardio">Cardio</option>
+                <option value="strength">Strength</option>
+                <option value="hiit">HIIT</option>
+            </select>
+            <button class="cta-btn" onclick="generateWorkout()">Generate Workout</button>
+            <div id="workout-plan"></div>
+        </div>
+    </section>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value) / 100;
+            const bmi = weight / (height * height);
+            let message = '';
+
+            if (bmi < 18.5) message = 'Underweight - Eat more frequently';
+            else if (bmi < 25) message = 'Healthy weight - Keep it up!';
+            else if (bmi < 30) message = 'Overweight - Consider more exercise';
+            else message = 'Obese - Please consult a professional';
+
+            document.getElementById('bmi-result').innerHTML = `
+                <h3>Your BMI: ${bmi.toFixed(1)}</h3>
+                <p>${message}</p>
+            `;
+        }
+
+        function generateWorkout() {
+            const workouts = {
+                cardio: ['Running (30min)', 'Cycling (45min)', 'Jump Rope (20min)', 'Swimming (30min)'],
+                strength: ['Push-ups 3x15', 'Squats 4x12', 'Plank 3x1min', 'Deadlifts 4x8'],
+                hiit: ['Burpees 30s/30s x8', 'Mountain Climbers 40s/20s x6', 'Jump Squats 30s/30s x8']
+            };
+
+            const type = document.getElementById('workout-type').value;
+            const plan = workouts[type];
+            const workoutList = plan.map(ex => `<li>${ex}</li>`).join('');
+            
+            document.getElementById('workout-plan').innerHTML = `
+                <h3>Your ${type.toUpperCase()} Plan:</h3>
+                <ul>${workoutList}</ul>
+            `;
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
